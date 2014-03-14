@@ -18,6 +18,7 @@
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/spec.html \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/js \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/img \
+/home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/less \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/phonegap.js \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/cordova_plugins.js \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/css \
@@ -34,7 +35,9 @@
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/spec/lib/jasmine-1.2.0/jasmine.js \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/spec/lib/jasmine-1.2.0/jasmine.css \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/js/index.js \
+/home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/js/jquery.js \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/img/logo.png \
+/home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/less/index.less \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/css/index.css \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/res/icon \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/res/screen \

@@ -1,21 +1,27 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
+var timer = {
+    targetDate: null,
+    counter: null,
+    timerCallBack: function() {
+        var now = new Date();
+        var milisecondsLeft = ((timer.targetDate - now)) % 86400000;
+
+        var minutes = parseInt(milisecondsLeft / 60000);
+        milisecondsLeft = milisecondsLeft % 60000;
+        var seconds = parseInt(milisecondsLeft / 1000);
+        $(".minutes").text(minutes);
+        $(".seconds").text(seconds);
+    },
+    start: function() {
+        timer.counter = setInterval(timer.timerCallBack, 100);
+        var date = new Date();
+        date.setMinutes(date.getMinutes() + 90);
+        timer.targetDate = date;
+    },
+    stop: function() {
+        clearInterval(timer.counter);
+    }
+};
+
 var app = {
     // Application Constructor
     initialize: function() {
