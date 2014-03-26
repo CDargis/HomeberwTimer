@@ -1,146 +1,39 @@
-html, body {
-  margin: 0;
-  padding: 0;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-dd,
-dl,
-dt,
-li,
-ol,
-ul,
-fieldset,
-form,
-label,
-legend,
-button,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-weight: normal;
-  font-style: normal;
-  font-size: 100%;
-  line-height: 1;
-  font-family: inherit;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-ol, ul {
-  list-style: none;
-}
-q:before,
-q:after,
-blockquote:before,
-blockquote:after {
-  content: "";
-}
-html {
-  overflow-y: scroll;
-  font-size: 100%;
-}
-a:focus {
-  outline: thin dotted;
-}
-a:hover, a:active {
-  outline: 0;
-}
-img {
-  border: 0;
-}
-button,
-input,
-select,
-textarea {
-  font-size: 100%;
-  margin: 0;
-  vertical-align: baseline;
-  *vertical-align: middle;
-}
-button, input {
-  line-height: normal;
-  *overflow: visible;
-}
-button::-moz-focus-inner, input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
-}
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  cursor: pointer;
-}
-input[type="search"] {
-  box-sizing: content-box;
-}
-textarea {
-  overflow: auto;
-  vertical-align: top;
-}
 .row div {
   display: inline-block;
 }
-body {
-  background: -webkit-radial-gradient(#f1e767, #feb645) no-repeat center center fixed;
-  background-size: cover;
+.ui-page {
+  background: -webkit-radial-gradient(#f1e767, #feb645) 0 0 no-repeat fixed;
+  background-size: contain;
 }
-.app {
-  height: 100%;
-  width: auto;
+.ui-page .time {
+  font-size: 8em;
 }
-.app .time {
-  margin: 20% 0 0 0;
-  font: 500% Helvetica;
-}
-.app .time .timeWrap {
+.ui-page .time .timeWrap {
   width: auto;
   border-bottom: 1px solid;
 }
-.app .controls {
-  margin: 1% 0 0 0;
-  font: 200% Helvetica;
+.ui-page .controls .ui-btn {
+  padding: .7em 4em;
 }
-.app .timer {
+.ui-page .controls.ui-controlgroup {
+  padding-top: 1em;
+}
+.ui-page .timer {
   width: auto;
   margin: 0 auto;
   text-align: center;
-  color: darkred;
+}
+.ui-page .ingredients {
+  width: 80%;
+  margin: 0 auto;
+}
+.ui-page .addIngredientPopup {
+  text-align: center;
+}
+.ui-page .addIngredientPopup h3 {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+}
+.ui-page .addIngredientPopup .buttonWrap {
+  text-align: center;
 }

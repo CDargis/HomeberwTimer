@@ -15,7 +15,8 @@ var timer = {
         $(".seconds").text(seconds);
     },
     start: function() {
-        timer.counter = setInterval(timer.timerCallBack, 100);
+        timer.stop();
+        timer.counter = setInterval(timer.timerCallBack, 500);
         var date = new Date();
         date.setMinutes(date.getMinutes() + 90);
         timer.targetDate = date;
@@ -46,13 +47,11 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
+        console.log(id);
     }
 };
+
+$(document).ready(function() {
+    $("#startButton").click(timer.start);
+    $("#stopButton").click(timer.stop);
+});

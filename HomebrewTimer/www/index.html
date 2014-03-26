@@ -4,30 +4,57 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Homebrew Timer</title>
     </head>
     <body>
-        <div class="app">
-            <div class="timer">
-                <div class="time row">
-                    <div class="timeWrap">
-                        <div class="minutes">90</div>
-                        <div class="sep">:</div>
-                        <div class="seconds">00</div>
+        <div data-role="page" data-title="Homebrew Timer">
+            <div data-role="main" class="ui-content">
+                <div class="timer" data-role="content">
+                    <div class="time row">
+                        <div class="timeWrap">
+                            <div class="minutes">90</div>
+                            <div class="sep">:</div>
+                            <div class="seconds">00</div>
+                        </div>
+                    </div>
+                    <div class="controls" data-role="controlgroup" data-type="horizontal">
+                        <a href="#" id="startButton" data-role="button" data-inline="true">Start</a>
+                        <a href="#" id="stopButton" data-role="button" data-inline="true">Stop</a>
                     </div>
                 </div>
-                <div class="controls row">
-                    <input type="button" value="START" onclick="timer.start()"/>
-                    <input type="button" value="STOP" onclick="timer.stop()"/>
+                <div class="ingredients" data-role="content">
+                    <ul data-role="listview">
+                        <li data-icon="plus">
+                            <a href="#addIngredientPopup" data-rel="popup"><h1>Add</h1></a>
+                        </li>
+                        <li data-icon="gear">
+                            <a href="#deleteIngredientPopup" data-rel="popup"><h1>Citra</h1></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="addIngredientPopup ui-content" id="addIngredientPopup" data-role="popup" data-transition="pop">
+                    <form>
+                        <h3>Add</h3>
+                        <input type="text" name="name" id="ingredientName" placeholder="Name"/>
+                        <input type="text" name="amount" id="ingredientAMount" placeholder="Amount"/>
+                        <input type="text" name="time" id="dropTime" placeholder="Time (e.g. 60:00)"/>
+                        <div class="buttonWrap" data-role="controlgroup" data-type="horizontal">
+                            <a href="#" id="addPopupAccept" data-role="button" data-inline="true">Accept</a>
+                            <a href="#" id="addPopupCancel" data-role="button" data-inline="true" data-rel="back">Cancel</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript">
-            app.initialize();
+            <script type="text/javascript" src="js/jquery.js"></script>
+            <script type="text/javascript" src="js/jquery.mobile-1.4.2.js"></script>
+            <script type="text/javascript" src="phonegap.js"></script>
+            <script type="text/javascript" src="js/index.js"></script>
+            <script type="text/javascript">
+                app.initialize();
+            </script>
         </script>
     </body>
 </html>
