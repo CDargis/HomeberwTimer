@@ -1,3 +1,28 @@
+var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicity call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        console.log(id);
+    }
+};
+
 var timer = {
     targetDate: null,
     counter: null,
@@ -26,33 +51,6 @@ var timer = {
     }
 };
 
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        console.log(id);
-    }
-};
-
-var ingredients = {};
-
 var generateID = function(name, amount, time) {
     var i = 0;
     while(true) {
@@ -64,18 +62,6 @@ var generateID = function(name, amount, time) {
         i++;
     }
 };
-
-var fixName = function(name) {
-    return name;
-}
-
-var fixAmount = function(amount) {
-    return amount;
-}
-
-var fixTime = function(time) {
-    return time;
-}
 
 var showAddIngedientPopup = function(e) {
     $("#addIngredientPopup").popup("open");
@@ -99,11 +85,15 @@ var deleteIngredientAcceptCb = function(e) {
     $("#deleteIngredientPopup").popup("close");
 };
 
-$(document).ready(function() {
-    $("#startButton").click(timer.start);
-    $("#stopButton").click(timer.stop);
-    $(".ingredients .addButton").click(showAddIngedientPopup);
-    $("#addPopupAccept").click(addIngredientAcceptCb);
-    $(".ingredients .ingredient").click(showDeleteIngredientPopup);
-    $("#deletePopupAccept").click(deleteIngredientAcceptCb);
-});
+var ViewModel = {
+    timer: timer,
+    showAddIngedientPopup: showAddIngedientPopup,
+    addIngredientAcceptCb: addIngredientAcceptCb,
+    showDeleteIngredientPopup: showDeleteIngredientPopup,
+    deleteIngredientAcceptCb: deleteIngredientAcceptCb,
+    testIt: function() {
+        alert("yeah son");
+    }
+};
+
+ko.applyBindings(ViewModel);

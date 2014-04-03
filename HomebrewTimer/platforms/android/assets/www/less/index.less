@@ -2,9 +2,6 @@
   div { display: inline-block; }
 }
 
-// Index.html
-
-// End Index.html
 .ui-page {
   background: -webkit-radial-gradient(#f1e767, #feb645) 0 0 no-repeat fixed;
   background-size: contain;
@@ -38,9 +35,18 @@
   .ingredients {
     width: 80%;
     margin: 0 auto;
+
+    .addButton {
+      font-size: 1.2em;
+      text-align: center;
+    }
+
+    li a h1 {
+      display: inline-block;
+    }
   }
 
-  .addIngredientPopup {
+  #addIngredientPopup, #deleteIngredientPopup {
     text-align: center;
 
     h3 {
@@ -53,4 +59,4 @@
     }
   }
 
-} // .app
+} // .ui-page

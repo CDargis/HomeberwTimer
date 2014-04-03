@@ -37,6 +37,7 @@
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/js/index.js \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/js/jquery.mobile-1.4.2.js \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/js/jquery.js \
+/home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/js/knockout.js \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/img/logo.png \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/less/index.less \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/css/index.css \

@@ -20,16 +20,16 @@
                         </div>
                     </div>
                     <div class="controls" data-role="controlgroup" data-type="horizontal">
-                        <a href="#" id="startButton" data-role="button" data-inline="true">Start</a>
-                        <a href="#" id="stopButton" data-role="button" data-inline="true">Stop</a>
+                        <a href="#" id="startButton" data-role="button" data-inline="true" data-bind="click: timer.start">Start</a>
+                        <a href="#" id="stopButton" data-role="button" data-inline="true" data-bind="click: timer.stop">Stop</a>
                     </div>
                 </div>
                 <div class="ingredients" data-role="content">
                     <ul data-role="listview">
                         <li data-icon="plus">
-                            <a href="#" class="addButton"><h1>Add</h1></a>
+                            <a href="#" class="addButton" data-bind="click: showAddIngedientPopup"><h1>Add</h1></a>
                         </li>
-                        <li id="ing_1" class="ingredient" data-icon="delete">
+                        <li id="ing_1" class="ingredient" data-icon="delete" data-bind="click: showDeleteIngredientPopup">
                             <a href="#">
                                 <h1>60:00</h1>
                                 <h1>Citra</h1>
@@ -44,7 +44,7 @@
                         <input type="text" name="amount" id="ingredientAmount" placeholder="Amount"/>
                         <input type="text" name="time" id="ingredientDropTime" placeholder="Time (e.g. 60:00)"/>
                         <div class="buttonWrap" data-role="controlgroup" data-type="horizontal">
-                            <a href="#" id="addPopupAccept" data-role="button" data-inline="true">Accept</a>
+                            <a href="#" id="addPopupAccept" data-role="button" data-inline="true" data-bind="click: addPopupAccept">Accept</a>
                             <a href="#" id="addPopupCancel" data-role="button" data-inline="true" data-rel="back">Cancel</a>
                         </div>
                     </form>
@@ -53,7 +53,7 @@
                     <form>
                         <h3>Delete?</h3>
                         <div class="buttonWrap" data-role="controlgroup" data-type="horizontal">
-                            <a href="#" id="deletePopupAccept" data-role="button" data-inline="true">Accept</a>
+                            <a href="#" id="deletePopupAccept" data-role="button" data-inline="true" data-bind="click: deletePopupAccept">Accept</a>
                             <a href="#" id="deletePopupCancel" data-role="button" data-inline="true" data-rel="back">Cancel</a>
                         </div>
                     </form>
@@ -62,6 +62,7 @@
         </div>
             <script type="text/javascript" src="js/jquery.js"></script>
             <script type="text/javascript" src="js/jquery.mobile-1.4.2.js"></script>
+            <script type="text/javascript" src="js/knockout.js"></script>
             <script type="text/javascript" src="phonegap.js"></script>
             <script type="text/javascript" src="js/index.js"></script>
             <script type="text/javascript">
