@@ -27,13 +27,20 @@
   width: 80%;
   margin: 0 auto;
 }
-.ui-page .addIngredientPopup {
+.ui-page .ingredients .addButton {
+  font-size: 1.2em;
   text-align: center;
 }
-.ui-page .addIngredientPopup h3 {
+.ui-page .ingredients li a h1 {
+  display: inline-block;
+}
+.ui-page #addIngredientPopup, .ui-page #deleteIngredientPopup {
+  text-align: center;
+}
+.ui-page #addIngredientPopup h3, .ui-page #deleteIngredientPopup h3 {
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;
 }
-.ui-page .addIngredientPopup .buttonWrap {
+.ui-page #addIngredientPopup .buttonWrap, .ui-page #deleteIngredientPopup .buttonWrap {
   text-align: center;
 }

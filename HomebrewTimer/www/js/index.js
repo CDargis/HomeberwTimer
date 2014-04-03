@@ -51,7 +51,59 @@ var app = {
     }
 };
 
+var ingredients = {};
+
+var generateID = function(name, amount, time) {
+    var i = 0;
+    while(true) {
+        var proposed = name + "_" + amount + "_" + time + "_" + i;
+        if(ingredients[proposed] == undefined) {
+            ingredients[proposed] = true;
+            return proposed;
+        }
+        i++;
+    }
+};
+
+var fixName = function(name) {
+    return name;
+}
+
+var fixAmount = function(amount) {
+    return amount;
+}
+
+var fixTime = function(time) {
+    return time;
+}
+
+var showAddIngedientPopup = function(e) {
+    $("#addIngredientPopup").popup("open");
+};
+
+var addIngredientAcceptCb = function(e) {
+    var name = $("#ingredientName").val();
+    var amount = $("#ingredientAmount").val();
+    var time = $("#ingredientDropTime").val();
+    var id = generateID(name, amount, time);
+    console.log(id);
+    $("#addIngredientPopup").popup("close");
+};
+
+var showDeleteIngredientPopup = function(e) {
+    var id = $(e.currentTarget).attr("id");
+    $("#deleteIngredientPopup").popup("open");
+};
+
+var deleteIngredientAcceptCb = function(e) {
+    $("#deleteIngredientPopup").popup("close");
+};
+
 $(document).ready(function() {
     $("#startButton").click(timer.start);
     $("#stopButton").click(timer.stop);
+    $(".ingredients .addButton").click(showAddIngedientPopup);
+    $("#addPopupAccept").click(addIngredientAcceptCb);
+    $(".ingredients .ingredient").click(showDeleteIngredientPopup);
+    $("#deletePopupAccept").click(deleteIngredientAcceptCb);
 });
