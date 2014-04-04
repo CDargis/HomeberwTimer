@@ -68,7 +68,6 @@ var ingredientModel = function(name, amount, time) {
         dropTime: time
     };
     obj.isLast = ko.computed(function() {
-        console.log(ingredients().length);
         if(ingredients()[ingredients().length - 1] === obj) return true;
         else return false;
     });
