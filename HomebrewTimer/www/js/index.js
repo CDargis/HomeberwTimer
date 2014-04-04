@@ -51,16 +51,33 @@ var timer = {
     }
 };
 
-var generateID = function(name, amount, time) {
-    var i = 0;
-    while(true) {
-        var proposed = name + "_" + amount + "_" + time + "_" + i;
-        if(ingredients[proposed] == undefined) {
-            ingredients[proposed] = true;
-            return proposed;
-        }
-        i++;
-    }
+var ingredients = ko.observableArray([]);
+
+var ingredientSortFunc = function(a, b) {
+    if(a.time < b.time)
+        return -1;
+    if(a.time > b.time)
+        return 1;
+    return 0;
+};
+
+var ingredientModel = function(name, amount, time) {
+    obj = {
+        name: name,
+        amount: amount,
+        dropTime: time
+    };
+    obj.isLast = ko.computed(function() {
+        console.log(ingredients().length);
+        if(ingredients()[ingredients().length - 1] === obj) return true;
+        else return false;
+    });
+    return obj;
+};
+
+var addIngredient = function(ing) {
+    ingredients.push(ing);
+    ingredients.sort(ingredientSortFunc);
 };
 
 var showAddIngedientPopup = function(e) {
@@ -71,8 +88,7 @@ var addIngredientAcceptCb = function(e) {
     var name = $("#ingredientName").val();
     var amount = $("#ingredientAmount").val();
     var time = $("#ingredientDropTime").val();
-    var id = generateID(name, amount, time);
-    console.log(id);
+    addIngredient(ingredientModel(name, amount, time));
     $("#addIngredientPopup").popup("close");
 };
 
@@ -91,9 +107,7 @@ var ViewModel = {
     addIngredientAcceptCb: addIngredientAcceptCb,
     showDeleteIngredientPopup: showDeleteIngredientPopup,
     deleteIngredientAcceptCb: deleteIngredientAcceptCb,
-    testIt: function() {
-        alert("yeah son");
-    }
+    ingredients: ingredients
 };
 
 ko.applyBindings(ViewModel);
