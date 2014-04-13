@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "DSDigi";
+  src: url("../res/fonts/DS-DIGI.TTF");
+}
 .row div {
   display: inline-block;
 }
@@ -22,6 +26,7 @@
   width: auto;
   margin: 0 auto;
   text-align: center;
+  font-family: DSDigi;
 }
 .ui-page .ingredients {
   width: 80%;
@@ -40,7 +45,4 @@
 .ui-page #addIngredientPopup h3, .ui-page #deleteIngredientPopup h3 {
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;
-}
-.ui-page #addIngredientPopup .buttonWrap, .ui-page #deleteIngredientPopup .buttonWrap {
-  text-align: center;
 }

@@ -54,22 +54,27 @@ var timer = {
 var ingredients = ko.observableArray([]);
 
 var ingredientSortFunc = function(a, b) {
-    if(a.time < b.time)
-        return -1;
-    if(a.time > b.time)
+    if(a.totalSeconds() < b.totalSeconds())
         return 1;
+    if(a.totalSeconds() > b.totalSeconds())
+        return -1;
     return 0;
 };
 
 var ingredientModel = function(name, amount, time) {
     obj = {
-        name: name,
-        amount: amount,
-        dropTime: time
+        name: ko.observable(name),
+        amount: ko.observable(amount),
+        dropTime: ko.observable(time),
+        totalSeconds: function() {
+            var tokens = time.split(":");
+            var minutes = parseInt(tokens[0]);
+            var seconds = parseInt(tokens[1]);
+            return (minutes * 60) + seconds;
+        }
     };
-    obj.isLast = ko.computed(function() {
-        if(ingredients()[ingredients().length - 1] === obj) return true;
-        else return false;
+    obj.deleteMsg = ko.computed(function() {
+        return "Delete " + obj.name() + " at " + obj.dropTime() + "?";
     });
     return obj;
 };
@@ -79,34 +84,55 @@ var addIngredient = function(ing) {
     ingredients.sort(ingredientSortFunc);
 };
 
-var showAddIngedientPopup = function(e) {
-    $("#addIngredientPopup").popup("open");
+// Add dialog
+var clearAcceptDialog = function() {
+    $("#ingredientName").val("");
+    $("#ingredientAmount").val("");
+    $("#ingredientDropTime").val("");
 };
 
-var addIngredientAcceptCb = function(e) {
+var showAddIngedientPopup = function(d, e) {
+    $.mobile.changePage("#addDialog", { role: "dialog" });
+};
+
+var addDialogAccept = function() {
     var name = $("#ingredientName").val();
     var amount = $("#ingredientAmount").val();
     var time = $("#ingredientDropTime").val();
     addIngredient(ingredientModel(name, amount, time));
-    $("#addIngredientPopup").popup("close");
+    $("[data-role=dialog]").dialog("close");
+    clearAcceptDialog();
 };
 
-var showDeleteIngredientPopup = function(e) {
-    var id = $(e.currentTarget).attr("id");
-    $("#deleteIngredientPopup").popup("open");
+var addDialogCancel = function() {
+    $("[data-role=dialog]").dialog("close");
+    clearAcceptDialog();
 };
 
-var deleteIngredientAcceptCb = function(e) {
-    $("#deleteIngredientPopup").popup("close");
+// Delete dialog
+var showDeleteIngredientPopup = function(d, e) {
+    viewModel.modelForDeleteDialog(d);
+    $.mobile.changePage("#deleteDialog", { role: "dialog" });
 };
 
-var ViewModel = {
+var deleteDialogAccept = function() {
+    ingredients.remove(viewModel.modelForDeleteDialog());
+    $("[data-role=dialog]").dialog("close");
+};
+
+var deleteDialogCancel = function() {
+    $("[data-role=dialog]").dialog("close");
+};
+
+var viewModel = {
     timer: timer,
     showAddIngedientPopup: showAddIngedientPopup,
-    addIngredientAcceptCb: addIngredientAcceptCb,
     showDeleteIngredientPopup: showDeleteIngredientPopup,
-    deleteIngredientAcceptCb: deleteIngredientAcceptCb,
+    addDialogCancel: addDialogCancel,
+    deleteDialogAccept: deleteDialogAccept,
+    deleteDialogCancel: deleteDialogCancel,
+    modelForDeleteDialog: ko.observable(ingredientModel("", "", "")),
     ingredients: ingredients
 };
 
-ko.applyBindings(ViewModel);
+ko.applyBindings(viewModel);
