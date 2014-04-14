@@ -3,6 +3,14 @@
   src: url("../res/fonts/DS-DIGI.TTF");
 }
 
+.ui-header {
+  &.ui-bar-inherit {
+    background-color: #333;
+    color: #E9E9E9;
+    border: none;
+  }
+}
+
 .row {
   div { display: inline-block; }
 }
@@ -52,6 +60,11 @@
     }
   }
 
+  .addForm {
+    width: 80%;
+    margin: 0 auto;
+  }
+
   #addIngredientPopup, #deleteIngredientPopup {
     text-align: center;
 
@@ -59,7 +72,6 @@
       -webkit-margin-before: 0;
       -webkit-margin-after:0;
     }
-
   }
 
 } // .ui-page

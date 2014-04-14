@@ -2,6 +2,11 @@
   font-family: "DSDigi";
   src: url("../res/fonts/DS-DIGI.TTF");
 }
+.ui-header.ui-bar-inherit {
+  background-color: #333;
+  color: #E9E9E9;
+  border: none;
+}
 .row div {
   display: inline-block;
 }
@@ -38,6 +43,10 @@
 }
 .ui-page .ingredients li a h1 {
   display: inline-block;
+}
+.ui-page .addForm {
+  width: 80%;
+  margin: 0 auto;
 }
 .ui-page #addIngredientPopup, .ui-page #deleteIngredientPopup {
   text-align: center;

@@ -8,10 +8,13 @@
         <!-- styles -->
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Homebrew Timer</title>
+        <title>Homebrew Buddy</title>
     </head>
     <body>
-        <div data-role="page" data-title="Homebrew Timer">
+        <div data-role="page" data-title="Homebrew Buddy">
+            <div data-role="header">
+                <h1>Homebrew Buddy</h1>
+            </div>
             <div data-role="main" class="ui-content">
                 <div class="timer" data-role="content">
                     <div class="time row">
@@ -29,7 +32,7 @@
                 <div class="ingredients" data-role="content">
                     <ul data-role="listview">
                         <li data-icon="plus" data-bind="css: { 'ui-last-child': ingredients().length === 0 }">
-                            <a href="#" class="addButton" data-bind="click: showAddIngedientPopup"><h1>Add</h1></a>
+                            <a href="#addIngredient" class="addButton"><h1>Add</h1></a>
                         </li>
                         <!-- ko foreach: ingredients -->
                         <li class="ingredient" data-icon="delete" data-bind="click: showDeleteIngredientPopup">
@@ -43,19 +46,19 @@
                 </div>
             </div>
         </div>
-        <div id="addDialog" data-role="page">
+        <div id="addIngredient" data-role="page">
             <div data-role="header">
-                <h1>Add an Ingredient</h1>
+                <h1>Add Ingredient</h1>
             </div>
-            <div data-role="content">
+            <div class="addForm" data-role="content">
                 <input type="text" name="name" id="ingredientName" placeholder="Name"/>
                 <input type="text" name="amount" id="ingredientAmount" placeholder="Amount (oz)"/>
                 <input type="text" name="time" id="ingredientDropTime" placeholder="Time (e.g. 60:00)"/>
                 <a href="#" data-role="button" data-bind="click: addDialogAccept">Add</a>
-                <a href="#" data-role="button" data-bind="click: addDialogCancel">Cancel</a>
+                <a href="#" data-role="button" data-direction="reverse" data-rel="back">Cancel</a>
             </div>
         </div>
-         <div id="deleteDialog" data-role="page">
+        <div id="deleteDialog" data-role="page">
             <div data-role="header">
                 <h1>Delete?</h1>
             </div>

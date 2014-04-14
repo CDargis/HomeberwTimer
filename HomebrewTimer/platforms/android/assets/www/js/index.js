@@ -1,3 +1,28 @@
+var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicity call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        console.log(id);
+    }
+};
+
 var timer = {
     targetDate: null,
     counter: null,
@@ -26,83 +51,82 @@ var timer = {
     }
 };
 
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        console.log(id);
-    }
+var ingredients = ko.observableArray([]);
+
+var ingredientSortFunc = function(a, b) {
+    if(a.totalSeconds() < b.totalSeconds())
+        return 1;
+    if(a.totalSeconds() > b.totalSeconds())
+        return -1;
+    return 0;
 };
 
-var ingredients = {};
-
-var generateID = function(name, amount, time) {
-    var i = 0;
-    while(true) {
-        var proposed = name + "_" + amount + "_" + time + "_" + i;
-        if(ingredients[proposed] == undefined) {
-            ingredients[proposed] = true;
-            return proposed;
+var ingredientModel = function(name, amount, time) {
+    obj = {
+        name: ko.observable(name),
+        amount: ko.observable(amount),
+        dropTime: ko.observable(time),
+        totalSeconds: function() {
+            var tokens = time.split(":");
+            var minutes = parseInt(tokens[0]);
+            var seconds = parseInt(tokens[1]);
+            return (minutes * 60) + seconds;
         }
-        i++;
-    }
+    };
+    obj.deleteMsg = ko.computed(function() {
+        return "Delete " + obj.name() + " at " + obj.dropTime() + "?";
+    });
+    return obj;
 };
 
-var showAddIngedientPopup = function(e) {
-    $("#addIngredientPopup").popup("open");
+var addIngredient = function(ing) {
+    ingredients.push(ing);
+    ingredients.sort(ingredientSortFunc);
 };
 
-var addIngredientAcceptCb = function(e) {
+// Add dialog
+var clearAcceptDialog = function() {
+    $("#ingredientName").val("");
+    $("#ingredientAmount").val("");
+    $("#ingredientDropTime").val("");
+};
+
+var addDialogAccept = function() {
     var name = $("#ingredientName").val();
     var amount = $("#ingredientAmount").val();
     var time = $("#ingredientDropTime").val();
-    var id = generateID(name, amount, time);
-    console.log(id);
-    $("#addIngredientPopup").popup("close");
+    addIngredient(ingredientModel(name, amount, time));
+    $("[data-role=dialog]").dialog("close");
+    clearAcceptDialog();
 };
 
-var showDeleteIngredientPopup = function(e) {
-    var id = $(e.currentTarget).attr("id");
-    $("#deleteIngredientPopup").popup("open");
+var addDialogCancel = function() {
+    $("[data-role=dialog]").dialog("close");
+    clearAcceptDialog();
 };
 
-var deleteIngredientAcceptCb = function(e) {
-    $("#deleteIngredientPopup").popup("close");
+// Delete dialog
+var showDeleteIngredientPopup = function(d, e) {
+    viewModel.modelForDeleteDialog(d);
+    $.mobile.changePage("#deleteDialog", { role: "dialog" });
 };
 
-$(document).ready(function() {
-    $("#startButton").click(timer.start);
-    $("#stopButton").click(timer.stop);
-    //$(".ingredients .addButton").click(showAddIngedientPopup);
-    $("#addPopupAccept").click(addIngredientAcceptCb);
-    $(".ingredients .ingredient").click(showDeleteIngredientPopup);
-    $("#deletePopupAccept").click(deleteIngredientAcceptCb);
-});
-
-var ViewModel = {
-    personName: 'Bob',
-    personAge: 123,
-    testIt: function() {
-        alert("yeah son");
-    }
+var deleteDialogAccept = function() {
+    ingredients.remove(viewModel.modelForDeleteDialog());
+    $("[data-role=dialog]").dialog("close");
 };
 
+var deleteDialogCancel = function() {
+    $("[data-role=dialog]").dialog("close");
+};
 
-ko.applyBindings(ViewModel);
+var viewModel = {
+    timer: timer,
+    showDeleteIngredientPopup: showDeleteIngredientPopup,
+    deleteDialogAccept: deleteDialogAccept,
+    deleteDialogCancel: deleteDialogCancel,
+    modelForDeleteDialog: ko.observable(ingredientModel("", "", "")),
+    ingredients: ingredients
+};
+
+ko.applyBindings(viewModel);

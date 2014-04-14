@@ -91,10 +91,6 @@ var clearAcceptDialog = function() {
     $("#ingredientDropTime").val("");
 };
 
-var showAddIngedientPopup = function(d, e) {
-    $.mobile.changePage("#addDialog", { role: "dialog" });
-};
-
 var addDialogAccept = function() {
     var name = $("#ingredientName").val();
     var amount = $("#ingredientAmount").val();
@@ -126,9 +122,7 @@ var deleteDialogCancel = function() {
 
 var viewModel = {
     timer: timer,
-    showAddIngedientPopup: showAddIngedientPopup,
     showDeleteIngredientPopup: showDeleteIngredientPopup,
-    addDialogCancel: addDialogCancel,
     deleteDialogAccept: deleteDialogAccept,
     deleteDialogCancel: deleteDialogCancel,
     modelForDeleteDialog: ko.observable(ingredientModel("", "", "")),

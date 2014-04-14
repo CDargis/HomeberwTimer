@@ -246,8 +246,13 @@
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/css/images/icons-png/back-white.png \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/css/images/icons-png/star-black.png \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/css/images/icons-png/camera-white.png \
+/home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/res/fonts \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/res/icon \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/res/screen \
+/home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/res/fonts/DS-DIGIB.TTF \
+/home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/res/fonts/DS-DIGII.TTF \
+/home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/res/fonts/DS-DIGIT.TTF \
+/home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/res/fonts/DS-DIGI.TTF \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/res/icon/webos \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/res/icon/ios \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/assets/www/res/icon/android \
