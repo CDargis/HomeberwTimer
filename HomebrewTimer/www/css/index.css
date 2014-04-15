@@ -45,7 +45,8 @@
   display: inline-block;
 }
 .ui-page .addForm {
-  width: 80%;
+  text-align: center;
+  width: 70%;
   margin: 0 auto;
 }
 .ui-page #addIngredientPopup, .ui-page #deleteIngredientPopup {

@@ -17,12 +17,12 @@
        under the License.
  */
 
-package com.phonegap.helloworld;
+package com.phonegap.homebrewbuddy;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
 
-public class HelloWorld extends CordovaActivity 
+public class HomebrewBuddy extends CordovaActivity 
 {
     @Override
     public void onCreate(Bundle savedInstanceState)

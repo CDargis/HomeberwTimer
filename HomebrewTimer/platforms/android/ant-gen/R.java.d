@@ -1,4 +1,4 @@
-/home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/ant-gen/com/phonegap/helloworld/R.java \
+/home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/ant-gen/com/phonegap/homebrewbuddy/R.java \
  : /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/res/xml/config.xml \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/res/drawable-hdpi/icon.png \
 /home/chris/code/eclipse/HomebrewTimer/HomebrewTimer/platforms/android/res/values/strings.xml \

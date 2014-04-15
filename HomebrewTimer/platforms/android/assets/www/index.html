@@ -45,27 +45,33 @@
                     </ul>
                 </div>
             </div>
+            <div id="deletePopup" data-role="popup">
+                <div data-role="header">
+                    <h1>Delete?</h1>
+                </div>
+                <div data-role="content">
+                    <h1 data-bind="text: modelForDeleteDialog().deleteMsg"></h1>
+                    <a href="#" data-role="button" data-bind="click: deleteDialogAccept">Delete</a>
+                    <a href="#" data-role="button" data-bind="click: deleteDialogCancel">Cancel</a>
+                </div>
+            </div>
         </div>
         <div id="addIngredient" data-role="page">
             <div data-role="header">
                 <h1>Add Ingredient</h1>
             </div>
             <div class="addForm" data-role="content">
-                <input type="text" name="name" id="ingredientName" placeholder="Name"/>
-                <input type="text" name="amount" id="ingredientAmount" placeholder="Amount (oz)"/>
-                <input type="text" name="time" id="ingredientDropTime" placeholder="Time (e.g. 60:00)"/>
+                <div data-role="fieldcontain">
+                    <label for="ingredientName">Name</label><input type="text" name="name" id="ingredientName" placeholder="Citra"/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="ingredientAmount">Amount (oz)</label><input type="number" name="amount" id="ingredientAmount" placeholder=".25"/>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="ingredientDropTime">Drop Time (mm:ss)</label><input type="text" name="time" id="ingredientDropTime" placeholder="60:00, 20:00, etc"/>
+                </div>
                 <a href="#" data-role="button" data-bind="click: addDialogAccept">Add</a>
                 <a href="#" data-role="button" data-direction="reverse" data-rel="back">Cancel</a>
-            </div>
-        </div>
-        <div id="deleteDialog" data-role="page">
-            <div data-role="header">
-                <h1>Delete?</h1>
-            </div>
-            <div data-role="content">
-                <h1 data-bind="text: modelForDeleteDialog().deleteMsg"></h1>
-                <a href="#" data-role="button" data-bind="click: deleteDialogAccept">Delete</a>
-                <a href="#" data-role="button" data-bind="click: deleteDialogCancel">Cancel</a>
             </div>
         </div>
             <script type="text/javascript" src="js/jquery.js"></script>

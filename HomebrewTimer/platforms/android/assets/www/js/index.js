@@ -96,28 +96,23 @@ var addDialogAccept = function() {
     var amount = $("#ingredientAmount").val();
     var time = $("#ingredientDropTime").val();
     addIngredient(ingredientModel(name, amount, time));
-    $("[data-role=dialog]").dialog("close");
     clearAcceptDialog();
-};
-
-var addDialogCancel = function() {
-    $("[data-role=dialog]").dialog("close");
-    clearAcceptDialog();
+    history.back();
 };
 
 // Delete dialog
 var showDeleteIngredientPopup = function(d, e) {
     viewModel.modelForDeleteDialog(d);
-    $.mobile.changePage("#deleteDialog", { role: "dialog" });
+    $("#deletePopup").popup("open");
 };
 
 var deleteDialogAccept = function() {
     ingredients.remove(viewModel.modelForDeleteDialog());
-    $("[data-role=dialog]").dialog("close");
+    $("#deletePopup").popup("close");
 };
 
 var deleteDialogCancel = function() {
-    $("[data-role=dialog]").dialog("close");
+    $("#deletePopup").popup("close");
 };
 
 var viewModel = {
