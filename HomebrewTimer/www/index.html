@@ -62,13 +62,13 @@
             </div>
             <div class="addForm" data-role="content">
                 <div data-role="fieldcontain">
-                    <label for="ingredientName">Name</label><input type="text" name="name" id="ingredientName" placeholder="Citra"/>
+                    <label for="ingredientName">Name</label><input type="text" name="name" id="ingredientName" placeholder="Citra" data-clear-btn="true"/>
                 </div>
                 <div data-role="fieldcontain">
-                    <label for="ingredientAmount">Amount (oz)</label><input type="number" name="amount" id="ingredientAmount" placeholder=".25"/>
+                    <label for="ingredientAmount">Amount (oz)</label><input type="text" name="amount" id="ingredientAmount" placeholder=".25" data-clear-btn="true"/>
                 </div>
                 <div data-role="fieldcontain">
-                    <label for="ingredientDropTime">Drop Time (mm:ss)</label><input type="text" name="time" id="ingredientDropTime" placeholder="60:00, 20:00, etc"/>
+                    <label for="ingredientDropTime">Drop Time (mm:ss)</label><input type="text" name="time" id="ingredientDropTime" placeholder="60:00, 20:00, etc" data-clear-btn="true"/>
                 </div>
                 <a href="#" data-role="button" data-bind="click: addDialogAccept">Add</a>
                 <a href="#" data-role="button" data-direction="reverse" data-rel="back">Cancel</a>
